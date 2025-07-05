@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personal Event Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Event Manager</h1>
+
+    <!-- Name Form -->
+    <form id="user-form">
+      <input type="text" id="username" placeholder="Your Name" required />
+      <button type="submit">Save Name</button>
+    </form>
+    <h2 id="welcome-msg"></h2>
+
+    <!-- Event Form -->
+    <form id="event-form">
+      <input type="text" id="title" placeholder="Event Title" required />
+      <input type="date" id="date" required />
+      <textarea id="description" placeholder="Event Description" required></textarea>
+      <button type="submit">Save Event</button>
+    </form>
+
+    <!-- Events -->
+    <div id="event-list"></div>
+  </div>
+
+  <!-- Firebase-powered App Script -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
