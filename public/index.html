@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Reminder Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>📅 Event Reminder Manager</h1>
+
+
+  <form id="reminderForm">
+    <input type="text" id="title" placeholder="Title" required />
+    <input type="text" id="description" placeholder="Description" required />
+    <input type="date" id="date" required />
+    <input type="time" id="time" required />
+    <button type="submit">Add Reminder</button>
+  </form>
+  <!-- 📝 Edit Modal -->
+<div id="editModal" style="display:none; padding: 10px; border: 1px solid #ccc; margin-top: 20px;">
+  <h3>Edit Reminder</h3>
+  <input type="text" id="editTitle" placeholder="Title" required>
+  <input type="text" id="editDescription" placeholder="Description">
+  <input type="date" id="editDate" required>
+  <input type="time" id="editTime" required>
+  <button onclick="submitEdit()">Save Changes</button>
+  <button onclick="cancelEdit()">Cancel</button>
+</div>
+
+
+<p id="successMsg" style="color: green; display: none;">Reminder added successfully!</p>
+<p id="deleteMsg" style="color: red; font-weight: bold; display: none;">Reminder deleted successfully!</p>
+<p id="updateMsg" style="color: #4CAF50; font-weight: bold; display: none;">Reminder updated successfully!</p>
+
+  <h2>Reminders</h2>
+  <ul id="reminderList"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
