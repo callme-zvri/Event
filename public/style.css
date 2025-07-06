@@ -1,154 +1,64 @@
 /* 🌸 Lavender-themed Event Reminder App */
+/* Most styling is handled by Tailwind CSS classes directly in HTML */
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f3e5f5; /* Lavender */
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
+    font-family: 'Inter', sans-serif; /* Using Inter as per instructions */
+    background-color: #f3e5f5; /* Lavender */
 }
 
-h1 {
-  color: #6a1b9a;
-  margin-top: 30px;
+/* Custom styles for elements not fully covered by Tailwind or for specific overrides */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(40%) sepia(100%) saturate(200%) hue-rotate(240deg) brightness(80%) contrast(90%);
 }
 
-form {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px;
-  width: 300px;
-  box-shadow: 0 0 10px rgba(106, 27, 154, 0.2);
+/* Basic styling for the main container if needed */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-form input,
-form button {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ce93d8;
-  border-radius: 5px;
-  box-sizing: border-box;
+/* Custom styling for the list items if needed, though Tailwind handles much of it */
+#reminderList li {
+    border-left: 5px solid #ab47bc; /* Accent color */
 }
 
-form button {
-  background-color: #ba68c8;
-  color: white;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s;
+/* Ensure messages are centered if they appear outside the form/list */
+#successMsg, #deleteMsg, #updateMsg, #errorMsg { /* Added errorMsg */
+    text-align: center;
 }
 
-form button:hover {
-  background-color: #9c27b0;
-}
-
-#successMsg {
-  color: green;
-  font-weight: bold;
-  margin-top: 10px;
-  display: none;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  width: 80%;
-  max-width: 600px;
-}
-
-li {
-  background-color: #fff;
-  border-left: 5px solid #ab47bc;
-  margin-bottom: 15px;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
-  position: relative;
-}
-
-li strong {
-  font-size: 18px;
-}
-
-li button {
-  margin-right: 10px;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 5px;
-  background-color: #ce93d8;
-  color: white;
-  cursor: pointer;
-}
-
-li button:hover {
-  background-color: #ab47bc;
-}
-
-input[type="checkbox"] {
-  margin-right: 10px;
-}
-
-/* Edit modal */
+/* Hide the modal by default, Tailwind's 'hidden' class will control this */
 #editModal {
-  background-color: #ffffff;
-  border: 2px solid #ce93d8;
-  padding: 20px;
-  border-radius: 10px;
-  width: 300px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-/* 📝 Edit Modal Styling */
-#editModal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #ffffff;
-  border: 2px solid #ba68c8;
-  padding: 20px;
-  width: 320px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  z-index: 999;
-  display: none;
+    /* No need for display: none; here, Tailwind's 'hidden' class handles it */
 }
 
-#editModal h3 {
-  margin-bottom: 12px;
-  color: #6a1b9a;
-}
-
-#editModal input {
-  width: 100%;
-  margin: 6px 0;
-  padding: 10px;
-  border: 1px solid #ce93d8;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-#editModal button {
-  margin-top: 10px;
-  padding: 10px;
-  width: 48%;
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  color: white;
-}
-
-#editModal button:first-of-type {
-  background-color: #ba68c8;
-}
-
-#editModal button:last-of-type {
-  background-color: #e57373;
-  float: right;
+/* Adjustments for smaller screens */
+@media (max-width: 640px) {
+    #reminderList li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #reminderList li > div:first-child {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+    #reminderList li .flex-shrink-0 {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    #editModal button {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+    #editModal button:first-of-type {
+        margin-right: 0;
+    }
 }
