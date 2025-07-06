@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Event Reminder Manager</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
   <div class="container">
@@ -13,9 +14,12 @@
     <!-- Remainder Form -->
     <form id="reminderForm" class="bg-white p-6 rounded-lg shadow-md w-full max-w-sm mx-auto mb-8">
       <input type="text" id="title" placeholder="Title" required class="w-full p-2 mb-3 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
-      <input type="text" id="description" placeholder="Description" required class="w-full p-2 mb-3 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+      <input type="text" id="description" placeholder="Description" class="w-full p-2 mb-3 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
       <input type="date" id="date" required class="w-full p-2 mb-3 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
-      <input type="time" id="time" required class="w-full p-2 mb-4 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+      <div class="flex space-x-2 mb-4">
+        <input type="time" id="time" placeholder="Start Time" required class="w-1/2 p-2 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+        <input type="time" id="endTime" placeholder="End Time" required class="w-1/2 p-2 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+      </div>
       <button type="submit" class="w-full bg-purple-500 text-white font-bold py-2 px-4 rounded-md hover:bg-purple-600 transition duration-300">Add Reminder</button>
     </form>
 
@@ -25,8 +29,9 @@
     <p id="updateMsg" class="hidden text-blue-700 font-bold bg-blue-100 p-3 rounded-md w-full max-w-md mx-auto mb-4">Reminder updated successfully!</p>
     <p id="errorMsg" class="hidden text-red-700 font-bold bg-red-100 p-3 rounded-md w-full max-w-md mx-auto mb-4"></p>
 
+    <!-- Calendar section removed -->
 
-    <h2 class="text-center text-purple-700 text-2xl mb-4">Reminders</h2>
+    <h2 class="text-center text-purple-700 text-2xl mb-4">Reminders List</h2>
     <ul id="reminderList" class="w-full max-w-2xl mx-auto space-y-4"></ul>
 
     <!-- Edit Reminder -->
@@ -36,7 +41,10 @@
         <input type="text" id="editTitle" placeholder="Title" required class="w-full p-2 mb-3 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
         <input type="text" id="editDescription" placeholder="Description" class="w-full p-2 mb-3 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
         <input type="date" id="editDate" required class="w-full p-2 mb-3 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
-        <input type="time" id="editTime" required class="w-full p-2 mb-4 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+        <div class="flex space-x-2 mb-4">
+            <input type="time" id="editTime" placeholder="Start Time" required class="w-1/2 p-2 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <input type="time" id="editEndTime" placeholder="End Time" required class="w-1/2 p-2 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+        </div>
         <div class="flex justify-between space-x-2">
           <button onclick="submitEdit()" class="flex-1 bg-purple-500 text-white font-bold py-2 px-4 rounded-md hover:bg-purple-600 transition duration-300">Save Changes</button>
           <button onclick="cancelEdit()" class="flex-1 bg-red-500 text-white font-bold py-2 px-4 rounded-md hover:bg-red-600 transition duration-300">Cancel</button>
@@ -48,6 +56,5 @@
   <!-- Javascripts -->
   <script type="module" src="database.js"></script>
   <script src="script.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
 </body>
 </html>

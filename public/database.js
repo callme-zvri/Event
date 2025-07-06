@@ -1,4 +1,3 @@
-
 // Importation of functions that needed from the firestore 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, orderBy, where } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
@@ -27,4 +26,3 @@ window.db = db;
 window.auth = auth;
 window.appId = appId; // Pass appId to script.js for collection path
 window.firebaseFirestore = { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, orderBy, where };
-

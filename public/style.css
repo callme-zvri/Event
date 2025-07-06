@@ -1,18 +1,15 @@
-/* 🌸 Lavender-themed Event Reminder App */
-/* Most styling is handled by Tailwind CSS classes directly in HTML */
-
 body {
-    font-family: 'Inter', sans-serif; /* Using Inter as per instructions */
-    background-color: #f3e5f5; /* Lavender */
+    font-family: 'Inter', sans-serif; 
+    background-color: #f3e5f5; 
 }
 
-/* Custom styles for elements not fully covered by Tailwind or for specific overrides */
+
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator {
     filter: invert(40%) sepia(100%) saturate(200%) hue-rotate(240deg) brightness(80%) contrast(90%);
 }
 
-/* Basic styling for the main container if needed */
+
 .container {
     display: flex;
     flex-direction: column;
@@ -22,22 +19,20 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     box-sizing: border-box;
 }
 
-/* Custom styling for the list items if needed, though Tailwind handles much of it */
+
 #reminderList li {
     border-left: 5px solid #ab47bc; /* Accent color */
 }
 
-/* Ensure messages are centered if they appear outside the form/list */
 #successMsg, #deleteMsg, #updateMsg, #errorMsg { /* Added errorMsg */
     text-align: center;
 }
 
-/* Hide the modal by default, Tailwind's 'hidden' class will control this */
 #editModal {
-    /* No need for display: none; here, Tailwind's 'hidden' class handles it */
 }
 
-/* Adjustments for smaller screens */
+/* Removed all calendar-specific styles as the calendar HTML structure is removed */
+
 @media (max-width: 640px) {
     #reminderList li {
         flex-direction: column;
