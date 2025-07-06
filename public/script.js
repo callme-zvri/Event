@@ -31,20 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }, duration);
     }
 
-    // Function to get the correct Firestore collection path based on user authentication.
-    // Data is stored in a public collection as per instructions.
-    function getRemindersCollection() {
-        // The userId is included in the path, even for public data, to adhere to Firestore rules.
-        // For truly private data, the path would be `artifacts/${appId}/users/${userId}/reminders`.
-        const userId = auth.currentUser ? auth.currentUser.uid : 'anonymous';
-        return collection(db, `artifacts/${appId}/public/data/reminders`);
-    }
 
     /**
      * Checks for time overlaps with existing reminders on the same date.
-     * @param {string} newDate - The date of the new reminder (YYYY-MM-DD).
-     * @param {string} newTime - The time of the new reminder (HH:MM).
-     * @param {string} [excludeId=null] - Optional: ID of the reminder to exclude from overlap check (for edits).
+     * @param {string} newDate - The date of event (YYYY-MM-DD).
+     * @param {string} newTime - The time of event (HH:MM).
+     * @param {string} [excludeId=null] 
      * @returns {Promise<boolean>} - True if an overlap is found, false otherwise.
      */
     async function checkOverlap(newDate, newTime, excludeId = null) {
@@ -112,8 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
         loadReminders(); // Reload reminders to display the new one
     });
 
-    // ✅ Load Reminders
-    window.loadReminders = async () => { // Make it global so it can be called from HTML script
+    // Load Reminders
+    window.loadReminders = async () => { 
         try {
             const remindersRef = getRemindersCollection();
             // Order by date and then time to display chronologically
@@ -126,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const li = document.createElement('li');
                 li.className = 'bg-white p-4 rounded-lg shadow-sm flex items-center justify-between flex-wrap'; // Tailwind classes
 
-                // Using encodeURIComponent for title/description when passing to onclick
                 // to handle special characters correctly in HTML attributes.
                 li.innerHTML = `
                     <div class="flex items-center flex-grow min-w-0 pr-4">
@@ -156,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // ✅ Toggle Completed Status
+    // Completed Status
     window.toggleCompleted = async (id, status) => {
         try {
             const reminderDocRef = doc(getRemindersCollection(), id);
@@ -168,9 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // ✅ Delete Reminder
+    // Delete Reminder
     window.deleteReminder = async (id) => {
-        // Using native confirm for simplicity, but a custom modal is recommended for production.
         if (!confirm('Are you sure you want to delete this reminder?')) {
             return;
         }
@@ -195,13 +185,13 @@ document.addEventListener('DOMContentLoaded', () => {
         currentEditId = id;
     };
 
-    // ✅ Cancel Edit - Closes the modal
+    // Cancel Edit - Closes the modal
     window.cancelEdit = () => {
         editModal.classList.add('hidden'); // Hide modal using Tailwind class
         currentEditId = null;
     };
 
-    // ✅ Submit Edited Reminder
+    // Submit Edited Reminder
     window.submitEdit = async () => {
         if (!currentEditId) return; // Should not happen if edit flow is correct
 
@@ -228,10 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
             showMessage(errorMsg, 'Failed to update reminder. Please try again.');
         }
 
-        cancelEdit(); // Close the modal
-        loadReminders(); // Reload to show updated reminder
+        cancelEdit(); // Close the editor
+        loadReminders(); // to show updated reminder
     };
 
-    // loadReminders() is now called after authentication in the database.js script block.
-    // No need to call it here on DOMContentLoaded.
+  
 });

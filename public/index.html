@@ -9,7 +9,8 @@
 <body>
   <div class="container">
     <h1 class="text-center text-purple-800 mt-8 mb-6">📅 Event Reminder Manager</h1>
-
+    
+    <!-- Remainder Form -->
     <form id="reminderForm" class="bg-white p-6 rounded-lg shadow-md w-full max-w-sm mx-auto mb-8">
       <input type="text" id="title" placeholder="Title" required class="w-full p-2 mb-3 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
       <input type="text" id="description" placeholder="Description" required class="w-full p-2 mb-3 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
@@ -28,7 +29,7 @@
     <h2 class="text-center text-purple-700 text-2xl mb-4">Reminders</h2>
     <ul id="reminderList" class="w-full max-w-2xl mx-auto space-y-4"></ul>
 
-    <!-- 📝 Edit Modal -->
+    <!-- Edit Reminder -->
     <div id="editModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4 hidden">
       <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm">
         <h3 class="text-xl font-semibold mb-4 text-purple-700 text-center">Edit Reminder</h3>
@@ -44,10 +45,9 @@
     </div>
   </div>
 
-  <!-- Your main JavaScript files -->
+  <!-- Javascripts -->
   <script type="module" src="database.js"></script>
   <script src="script.js"></script>
-  <!-- Tailwind CSS CDN for styling -->
   <script src="https://cdn.tailwindcss.com"></script>
 </body>
 </html>
